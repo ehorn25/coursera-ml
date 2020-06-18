@@ -52,9 +52,10 @@ X = [ones(m, 1) X];
 init_theta = zeros(n+1, 1);
 options = optimset('gradobj', 'on', 'maxiter', 50);
 
-fmincg(@(T)(lrCostFunction(init_theta, X, (y == c), lambda), init_theta, options)
+for c = 1:num_labels;
+all_theta = fmincg(@(T)(lrCostFunction(init_theta, X, (y == c), lambda)), init_theta, options)
 
-
+end
 
 
 
